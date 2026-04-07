@@ -1,4 +1,3 @@
-
 import csv
 import json
 
@@ -24,4 +23,3 @@ if __name__ == '__main__':
     with open(OUTPUT_FILENAME, encoding='utf-8') as output_f:
         for line in output_f:
             print(line, end="")
-
