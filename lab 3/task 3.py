@@ -1,8 +1,21 @@
-# TODO  Напишите функцию count_letters
+def count_letters(text):
+    all_letters = [x.lower() for x in list(text) if x.isalpha() == True]
+    unique_letters = list(dict.fromkeys(all_letters))
+
+    # Подсчитываем количество букв
+    quantity_dictionary = dict()
+    for letter in unique_letters:
+        quantity_dictionary[letter] = all_letters.count(letter)
+    return quantity_dictionary
 
 
-# TODO Напишите функцию calculate_frequency
-
+def calculate_frequency(dictionary):
+    total_number_of_letters = sum(dictionary.values())
+    frequency_dictionary = dict()
+    for letter, quantity in dictionary.items():
+        letter_frequency = quantity / total_number_of_letters
+        frequency_dictionary[letter] = letter_frequency
+    return frequency_dictionary
 
 main_str = """
 У лукоморья дуб зелёный;
@@ -41,20 +54,8 @@ main_str = """
 """
 
 
+final_dictionary = count_letters(main_str)
 
-all_letters = [x.lower() for x in list(main_str) if x.isalpha() == True]
-unique_letters = list(dict.fromkeys(all_letters))
-
-quantity_dictionary=dict()
-for letter in unique_letters:
-    quantity_dictionary[letter] = all_letters.count(letter)
-
-total_number_of_letters=len(all_letters)
-frequency_dictionary = dict()
-for letter, quantity in quantity_dictionary.items():
-    letter_frequency = quantity/total_number_of_letters
-    frequency_dictionary[letter] = letter_frequency
-
-for letter, frequency in frequency_dictionary.items():
+for letter, frequency in calculate_frequency(final_dictionary).items():
     print(f'{letter}: {frequency:.2f}')
 
